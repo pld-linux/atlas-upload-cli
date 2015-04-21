@@ -39,7 +39,8 @@ deploys.
 
 %build
 export GOPATH=$(pwd)/vendor
-%{__make}
+# make -j1 because https://github.com/hashicorp/atlas-upload-cli/pull/10
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
