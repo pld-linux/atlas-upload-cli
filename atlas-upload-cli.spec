@@ -38,6 +38,9 @@ deploys.
 #package github.com/mitchellh/ioprogress: cannot download, $GOPATH not set. For more details see: go help gopath
 
 %build
+# these interfere with go download -- the git vars point to .spec repo
+unset GIT_DIR GIT_WORK_TREE
+
 export GOPATH=$(pwd)/vendor
 # make -j1 because https://github.com/hashicorp/atlas-upload-cli/pull/10
 %{__make} -j1
